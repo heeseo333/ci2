@@ -13,13 +13,18 @@ jobs:
     
     steps:
     - name: executing remote ssh commands using password
+       # ssh username@ip
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: |
+         cd ci2
+         git pull
+         sh gradlew build
+         nohup java -jar build/libs/*T.jar & >/dev/null 2>&1 &
       
     
     
