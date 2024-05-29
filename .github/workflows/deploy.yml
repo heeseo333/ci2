@@ -47,7 +47,7 @@ jobs:
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           docker rm -f spring-app || true
-          docker run --name spring-app --network server -e profiles=prod -e username=${{ secrets.DB_USERNAME }} -e password=${{ secrets.DB_PASSWORD }} -p 8080:8080 -d ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
+          docker run --name spring-app --network server -e profiles=prod -e username=root -e password=1234 -p 8080:8080 -d ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           # docker run --name spring -p 8080:8080 -e profiles=prod -e username=root -e password=1234 --network server freshbasil/spring-test:prod
 
 
