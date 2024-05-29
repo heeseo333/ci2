@@ -41,9 +41,9 @@ jobs:
     - name: SSH and Deploy
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
+        host: ${{ secrets.ssh_HOST }}
+        username: ${{ secrets.ssh_USERNAME }}
+        password: ${{ secrets.ssh_PASSWORD }}
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           docker rm -f spring-app || true
